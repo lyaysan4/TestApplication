@@ -16,9 +16,9 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
-    private String[] titles;
-    private ListView drawerList;
-    private DrawerLayout drawerLayout;
+    private String[]              titles;
+    private ListView              drawerList;
+    private DrawerLayout          drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -61,14 +61,19 @@ public class MainActivity extends Activity {
         titles = getResources().getStringArray(R.array.titles);
         drawerList = findViewById(R.id.drawer);
         drawerLayout = findViewById(R.id.drawer_layout);
-        drawerList.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_activated_1, titles));
+        drawerList.setAdapter(new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_activated_1,
+                titles));
+
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
         if (savedInstanceState == null) {
             selectItem(0);
         }
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                R.string.open_drawer, R.string.close_drawer) {
+        drawerToggle = new ActionBarDrawerToggle(
+                this, drawerLayout,
+                R.string.open_drawer,
+                R.string.close_drawer) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
